@@ -4,4 +4,123 @@ groovy learn
 https://www.ibm.com/developerworks/cn/education/java/j-groovy/j-groovy.html
 
 
-""
+为什么学习 groovy  ，
+groovy 是一种更有生产力的语言。 能够加快编码速度。
+
+groovy 语言不需要编译， 属于脚本语言。 如果想要编译，也可以使用groovyc
+甚至可以 c:>groovy -e "println 'Hello World!'"
+
+idea 集成 groovy 
+https://yq.aliyun.com/articles/83818
+
+1、groovy 是简化版的java . Groovy 和Java 代码可以互相转换
+2、Groovy 是没有类型的 Java 代码，
+----i, 在groovy 中，“一切都是对象”
+----
+
+3. 通过groovy 进行循环
+def repeat(val){
+	for(i=0;i<5;i++){
+		println val
+	}
+}
+
+repeat("hello xyy")
+
+i, groovy  中的范围
+0..<=4  代表 0到4
+a..e   代表 a,b,c,d,e
+
+默认参数值
+
+def repeat(val,repeat=5){
+	for(i in 0..<repeat){
+		println val
+	}
+}
+
+repeat("hello xyy",2)
+repeat("my sunshine",4)
+repeat("xyy")
+
+Groovy 集合
+1. 可以将范围当做集合
+2。def coll = ["Groovy","Java","Ruby"]
+   coll.add("Python")
+   coll << "Smalltalk"
+   coll[5] = "Perl"
+
+3.集合检索
+coll[1]
+4.集合加减
+
+def numbers =[1,2,3,4]
+assert numbers + 5 == [1,2,3,4,5]
+assert numbers - [2,3] == [1,4]
+
+魔法方法 join(),count(),*.
+
+assert numbers.join(",") == "1,2,3,4"
+assert [1,2,3,4,5].count(3) == 2
+
+assert ["JAVA","GROOVY"] == ["java","Groovy"]*.toUpperCase()
+
+
+Groovy 映射
+
+def hash = [name:"andy", "VPN-#":45]
+注意，在groovy 中key 不必是 String. name 看起来像是一个变量，在幕后，Groovy 会将它变成 String
+
+Groovy的映射底层是 Java 代码。 
+assert hash.getClass() == java.util.LinkedHashMap
+
+hash.put("id",23)
+hash.dob = "01/22/33"
+
+assert hash["name"] =="andy"
+hash["gender"] = "male"
+assert hash.gender == "male"
+assert hash["gender"] == "male"
+用[] 语法从映射获取项时， 必须将项作为String 引用
+
+
+Groovy 中的闭包
+
+def acoll ["Groovy","Java","Ruby"]
+
+acoll.each{
+	println it
+}
+
+{}包围起来的代码块就是闭包。 
+闭包是可执行的代码块。 它们不需要名称，可以在定义之后执行。
+闭包中 it 是一个关键字，指向被调用的外部集合的每个值-它是默认值， 可以用传递给
+闭包的参数覆盖它。 下面的代码执行同样的操作，但是用自己的项变量
+
+acoll.each{
+	value -> println value
+}
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
